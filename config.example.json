@@ -1,0 +1,27 @@
+{
+    "realm": {
+        "name": "REALMNAME",
+        "version": "REALMVERSION",
+        "host": "REALMHOST",
+        "port": "REALMPORT",
+        "worldDatabase": {
+            "host": "127.0.0.1",
+            "user": "user",
+            "password": "password",
+            "database": "world"
+        },
+        "characterDatabase": {
+            "host": "127.0.0.1",
+            "user": "user",
+            "password": "password",
+            "database": "characters"
+        }
+    },
+    "authDatabase": {
+        "host": "127.0.0.1",
+        "user": "user",
+        "password": "password",
+        "database": "auth"
+    },
+    "port": "8090"
+}
