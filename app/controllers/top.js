@@ -4,10 +4,17 @@ const humanizeDuration = require("humanize-duration");
 const wow = require('../modules/wow');
 
 exports.getTopKills = async (req, res) => {
-    var characters = await db.top.findAll({
-        limit: 10,
-        order: [['totalkills', 'DESC']]
-    });
+    try {
+        var characters = await db.top.findAll({
+            limit: 10,
+            order: [['totalkills', 'DESC']]
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            error: `There was an issue talking to the database.`
+        });
+    }
     var result = [];
     var place = 1;
     characters.forEach(character => {
@@ -27,10 +34,17 @@ exports.getTopKills = async (req, res) => {
 }
 
 exports.getTopPlaytime = async (req, res) => {
-    var characters = await db.top.findAll({
-        limit: 10,
-        order: [['totalTime', 'DESC']]
-    });
+    try {
+        var characters = await db.top.findAll({
+            limit: 10,
+            order: [['totalTime', 'DESC']]
+        });
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({
+            error: `There was an issue talking to the database.`
+        });
+    }
     var result = [];
     var place = 1;
     characters.forEach(character => {
@@ -57,7 +71,9 @@ exports.getTopHonor = async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            error: `There was an issue talking to the database.`
+        });
     }
     var result = [];
     var place = 1;

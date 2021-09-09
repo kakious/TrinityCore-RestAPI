@@ -13,7 +13,9 @@ exports.getCharacter = async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        return res.status(500).send(err);
+        return res.status(500).json({
+            error: `There was an issue talking to the database.`
+        });
     }
     if (!character) {
         res.json({
